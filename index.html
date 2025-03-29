@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Пример страницы с Яндекс.Метрикой</title>
-    <script type="text/javascript" src="/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=rVHjUNB2p5uuQCXuLLFDA_3lOLqRg9sPDekYfkj8qz0sjKxIq6OLZpCWm_j_Vw-p3N75zYclECkQy0Npv-4joewnxUhqn2IBZ3WhjKluQeJjmdSIOoyzQPsRS9HUvOIP" charset="UTF-8"></script><style>
+    <script type="text/javascript" src="/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=2nDBuFMGBNTAgymWpj02eu_PWjAss0glOm3lhAZQgONGyQVuFZu-M_X51BAAE6V76Fr-9FS4eF02_PFSLXVss4A7URVBTEY5f_4rt7fDK5WOfcheEF1bFpayEKfS3d78" charset="UTF-8"></script><style>
         /* Основные стили для всей страницы */
         * {
             box-sizing: border-box;
@@ -56,6 +56,18 @@
             text-align: center;
         }
 
+        .counter-container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #counter {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #333;
+        }
         /* Стили для подвала */
         .footer {
             background-color: #333;
@@ -80,6 +92,24 @@
             margin-top: 10px;
             border: 0;
         }
+        #clickButton {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+            #clickButton:hover {
+                background-color: #45a049;
+            }
     </style>
 </head>
 <body>
@@ -93,13 +123,21 @@
         <h1>Добро пожаловать!</h1>
     </div>
 
+
+
+
+    <div class="counter-container">
+        <h2>Счетчик кликов</h2>
+        <div id="counter">0</div>
+        <button id="clickButton">Нажми меня</button>
+    </div>
     <!-- Подвал с информером -->
     <div class="footer">
         <p>Статистика посещений:</p>
         <!-- Yandex.Metrika informer -->
         <a href="https://metrika.yandex.ru/stat/?id=98775397&amp;from=informer" target="_blank" rel="nofollow">
-            <img src="https://metrika-informer.com/informer/98775397/3_1_FFFFFFFF_EFEFEFFF_0_pageviews" 
-                 alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" 
+            <img src="https://metrika-informer.com/informer/98775397/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+                 alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)"
                  class="ym-advanced-informer" data-cid="98775397" data-lang="ru" />
         </a>
         <!-- /Yandex.Metrika informer -->
@@ -107,24 +145,39 @@
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {
-                if (document.scripts[j].src === r) { return; }
-            }
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
         })
-        (window, document, "script", "https://mc.webvisor.org/metrika/tag_ww.js", "ym");
-        ym(98775397, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true,
-            trackHash:true,
-            ecommerce:"dataLayer"
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(100665386, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
         });
     </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/100665386" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
+
+    <script>
+        let count = 0;
+        const counterElement = document.getElementById('counter');
+        const clickButton = document.getElementById('clickButton');
+
+        clickButton.addEventListener('click', function () {
+            count++;
+            counterElement.textContent = count;
+
+            // Анимация при клике
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 100);
+        });
+    </script>
 </body>
 </html>
